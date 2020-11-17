@@ -139,8 +139,10 @@ public class FXMLDocumentController implements Initializable {
     
     
     
-    
-    private void update(){
+   //Creates a file called OutputTemporary.json where any changes to the original Output.json are stored.
+   //This method is called every time the contents of the table are manipulated:
+   //At adding a new element, at deleting an element, and at modifying an already existing element 
+    public void update(){
         JSONArray array=new JSONArray();
         List<Person> persons2=new ArrayList<>();
         table.getItems().forEach((p) -> {
@@ -172,7 +174,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void HandleSaveData(ActionEvent event) {
+    public void HandleSaveData(ActionEvent event) {
         FileInputStream ins=null;
         FileOutputStream outs=null;
         try{
@@ -190,7 +192,6 @@ public class FXMLDocumentController implements Initializable {
             outs.close();
             
             FXML_JSON_ReadToTable app=new FXML_JSON_ReadToTable();
-            app.display();
             MessageLabel.setText("File saved successfully!");
         }
         
@@ -203,7 +204,7 @@ public class FXMLDocumentController implements Initializable {
         }
         catch(Exception e){
             
-        }
     }
     
+}
 }
